@@ -160,7 +160,7 @@ export default function MainContent() {
 				</Grid>
 
 				<Grid xs={12} sm={6}>
-					<div>
+					<div style={{ color: "black" }} >
 						<h2>
 							متبقي حتى صلاة{" "}
 							{prayersArray[nextPrayerIndex].displayName}
