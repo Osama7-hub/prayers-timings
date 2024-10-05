@@ -154,13 +154,13 @@ export default function MainContent() {
 			<Grid container>
 				<Grid xs={12} sm={6} style={{ textAlightn: "center" }}>
 					<div>
-						<h2>{today}</h2>
+						<h2 style={{ color: "#000" }}>{today}</h2>
 						<h1 style={{ color: "#2cbf92" }}>{selectedCity.displayName}</h1>
 					</div>
 				</Grid>
 
 				<Grid xs={12} sm={6}>
-					<div style={{ color: "black" }} >
+					<div style={{ color: "black" }}>
 						<h2>
 							متبقي حتى صلاة{" "}
 							{prayersArray[nextPrayerIndex].displayName}
