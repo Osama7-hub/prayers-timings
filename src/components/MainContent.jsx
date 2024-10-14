@@ -149,69 +149,73 @@ export default function MainContent() {
 	};
 
 	return (
-		<>
-			{/* TOP ROW */}
-			<Grid container>
-				<Grid xs={12} sm={6} style={{ textAlightn: "center" }}>
-					<div>
-						<h2>{today}</h2>
-						<h1 style={{ color: "#2cbf92" }}>{selectedCity.displayName}</h1>
-					</div>
-				</Grid>
+		<div className="content">
+			<Grid>
+				{/*== TOP ROW ==*/}
+				<Grid container>
+					<Grid xs={12} sm={6} style={{ textAlightn: "center" }}>
+						<div>
+							<h2 style={{ color: "#ddd" }}>{today}</h2>
+							<h1 style={{ color: "#ddd" }}>{selectedCity.displayName}</h1>
+						</div>
+					</Grid>
 
-				<Grid xs={12} sm={6}>
-					<div>
-						<h2>
-							متبقي حتى صلاة{" "}
-							{prayersArray[nextPrayerIndex].displayName}
-						</h2>
-						<h1 style={{ color: "#2cbf92" }}>{remainingTime}</h1>
-					</div>
+					<Grid xs={12} sm={6}>
+						<div>
+							<h2 style={{ color: "#ddd" }}>
+								متبقي حتى صلاة{" "}
+								{prayersArray[nextPrayerIndex].displayName}
+							</h2>
+							<h1 style={{ color: "#ddd" }}>{remainingTime}</h1>
+						</div>
+					</Grid>
 				</Grid>
+				{/*== TOP ROW ==*/}
+
+				<Divider style={{ borderColor: "black", opacity: "0.1" }} />
+
+				{/* PRAYERS CARDS */}
+				<Grid container spacing={1}>
+					<Grid sm={12} md={5} lg={12}>
+						<Prayer name="الفجر" time={timings.Fajr} />
+					</Grid>
+					<Grid sm={12} md={5} lg={12}>
+						<Prayer name="الظهر" time={timings.Dhuhr} />
+					</Grid>
+					<Grid sm={12} md={5} lg={2.3}>
+						<Prayer name="العصر" time={timings.Asr} />
+					</Grid>
+					<Grid sm={12} md={5} lg={2.3}>
+						<Prayer name="المغرب" time={timings.Sunset} />
+					</Grid>
+					<Grid sm={12} md={5} lg={2.3}>
+						<Prayer name="العشاء" time={timings.Isha} />
+					</Grid>
+				</Grid>
+				{/*== PRAYERS CARDS ==*/}
+
+				{/* SELECT CITY */}
+				<Stack direction="row" justifyContent={"center"} style={{ marginTop: "40px" }}>
+					<FormControl className="FormControl" style={{ width: "30%" }}>
+						<InputLabel id="demo-simple-select-label">
+							<span style={{ fontWeight: "bold", color: "white" }}>المدينة</span>
+						</InputLabel>
+						<Select
+							labelId="demo-simple-select-label"
+							id="demo-simple-select"
+							label="Age"
+							onChange={handleCityChange}
+						>
+							{avilableCities.map((city) => {
+								return (
+									<MenuItem value={city.apiName} key={city.apiName}>{city.displayName}</MenuItem>
+								);
+							})}
+						</Select>
+					</FormControl>
+				</Stack>
+				{/* SELECT CITY */}
 			</Grid>
-			{/*== TOP ROW ==*/}
-
-			<Divider style={{ borderColor: "black", opacity: "0.1" }} />
-
-			{/* PRAYERS CARDS */}
-			<Grid container spacing={1}>
-				<Grid xs={12} md={5} lg={2.3}><Prayer name="الفجر" time={timings.Fajr} /></Grid>
-				<Grid xs={12} md={5} lg={2.3}>
-					<Prayer name="الظهر" time={timings.Dhuhr} />
-				</Grid>
-				<Grid xs={12} md={5} lg={2.3}>
-					<Prayer name="العصر" time={timings.Asr} />
-				</Grid>
-				<Grid xs={12} md={5} lg={2.3}>
-					<Prayer name="المغرب" time={timings.Sunset} />
-				</Grid>
-				<Grid xs={12} md={5} lg={2.3}>
-					<Prayer name="العشاء" time={timings.Isha} />
-				</Grid>
-			</Grid>
-			{/*== PRAYERS CARDS ==*/}
-
-			{/* SELECT CITY */}
-			<Stack direction="row" justifyContent={"center"} style={{ marginTop: "40px" }}>
-				<FormControl style={{ width: "20%" }}>
-					<InputLabel id="demo-simple-select-label">
-						<span style={{ fontWeight: "bold" }}>المدينة</span>
-					</InputLabel>
-					<Select
-						labelId="demo-simple-select-label"
-						id="demo-simple-select"
-						label="Age"
-						onChange={handleCityChange}
-					>
-						{avilableCities.map((city) => {
-							return (
-								<MenuItem value={city.apiName} key={city.apiName}>{city.displayName}</MenuItem>
-							);
-						})}
-					</Select>
-				</FormControl>
-			</Stack>
-			{/* SELECT CITY */}
-		</>
+		</div>
 	);
 }
